@@ -26,7 +26,9 @@ public class Laser : MonoBehaviour {
         else if (Time.time - timeSinceInstatiation < 4)
         {
             GetComponent<Renderer>().enabled = true;
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
             GetComponent<Collider2D>().enabled = true;
+
         }
 
         else

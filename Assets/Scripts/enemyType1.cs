@@ -18,12 +18,16 @@ public class enemyType1 : MonoBehaviour {
 	void Update()
 	{
 		transform.Translate(new Vector3(-0.04f, speed, 0));
-		if (transform.position.y - frometh.y >= 2)
+		if (transform.position.y - frometh.y >= 1.5)
 			speed *= -1;
-		if (transform.position.y - frometh.y <= -2)
+		if (transform.position.y - frometh.y <= -1.5)
 			speed *= -1;
 
-	}
+        if (transform.position.x <= -12.5)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+    }
 
 	void Move()
 	{

@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     bool left = false;
 
     public GameObject deadPlayer;
+    public GameObject winScreen;
+    public GameObject gameOver;
 
     // Use this for initialization
     void Start()
@@ -26,21 +28,21 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleInput();
-        if (up && this.transform.position.y <= 3.9)
+        if (up && this.transform.position.y <= 3.3)
         {
             this.transform.Translate(0.1f* Vector3.up);
         }
 
-        if (down && this.transform.position.y >= -3.9)
+        if (down && this.transform.position.y >= -3.3)
         {
             this.transform.Translate(0.1f * Vector3.down);
         }
-        if (right && this.transform.position.x <= 13)
+        if (right && this.transform.position.x <= 10.5)
         {
             this.transform.Translate(0.1f * Vector3.right);
         }
 
-        if (left && this.transform.position.x >= -13)
+        if (left && this.transform.position.x >= -10.7)
         {
             this.transform.Translate(0.1f * Vector3.left);
         }
@@ -91,14 +93,20 @@ public class Player : MonoBehaviour
         if (coll.gameObject.name == "TheButton(Clone)")
         {
             Debug.Log("You Win");
-			SceneManager.LoadScene("win", LoadSceneMode.Additive);
+            Instantiate(winScreen);
+            GameObject.Destroy(GetComponent<AudioSource>());
+            GameObject.Destroy(this.gameObject);
+            //SceneManager.LoadScene("win", LoadSceneMode.Additive);
         }
         else
         {
             Instantiate(deadPlayer, this.transform.position, Quaternion.identity);
+            Instantiate(gameOver);
             GameObject.Destroy(this.gameObject);
-			SceneManager.LoadScene("lose", LoadSceneMode.Additive);
+            
 
+            //SceneManager.LoadScene("lose", LoadSceneMode.Additive);
         }
     }
+    
 }

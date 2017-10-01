@@ -10,6 +10,8 @@ public class LevelController : MonoBehaviour {
     public GameObject Enemy3;
     public GameObject Button;
     public GameObject Turret;
+    public GameObject PoisonGas;
+    public GameObject Background;
 
     bool stop = false;
 
@@ -23,38 +25,34 @@ public class LevelController : MonoBehaviour {
     {
         yield return new WaitForSeconds(3);
         Instantiate(Lasers);
-        Instantiate(Enemy2);
         yield return new WaitForSeconds(1);
-        Instantiate(Enemy1);
+        Instantiate(PoisonGas, new Vector3(-Random.Range(-10.2f, 10.2f), Random.Range(-4, 4), 0), Quaternion.identity);
+        Instantiate(Enemy1, new Vector3 (13, Random.Range(-2.5f, 2.5f), 0), Quaternion.identity);
         Instantiate(Turret);
-        Instantiate(Enemy3);
+        Background.GetComponent<Renderer>().material.color = Color.green;
         yield return new WaitForSeconds(3);
-        Instantiate(Enemy1);
-        Instantiate(Enemy2);
-        Instantiate(Enemy3);
-        Instantiate(Turret);
+        Instantiate(Enemy1, new Vector3(13, Random.Range(-2.5f, 2.5f), 0), Quaternion.identity);
         yield return new WaitForSeconds(3);
         Instantiate(Turret);
-        Instantiate(Lasers);
-        Instantiate(Enemy2);
+        Instantiate(PoisonGas, new Vector3(-Random.Range(-10.2f, 10.2f), Random.Range(-4, 4), 0), Quaternion.identity);
         yield return new WaitForSeconds(1);
-        Instantiate(Enemy1);
+        Instantiate(Enemy1, new Vector3(13, Random.Range(-2.5f, 2.5f), 0), Quaternion.identity);
         yield return new WaitForSeconds(2);
-        Instantiate(Turret);
-        Instantiate(Enemy3);
+        Instantiate(PoisonGas, new Vector3(-Random.Range(-10.2f, 10.2f), Random.Range(-4, 4), 0), Quaternion.identity);
+        Background.GetComponent<Renderer>().material.color = Color.cyan;
         yield return new WaitForSeconds(1.5f);
         Instantiate(Lasers);
-        Instantiate(Enemy2);
         yield return new WaitForSeconds(2);
-        Instantiate(Enemy1);
-        Instantiate(Enemy2);
-        Instantiate(Enemy3);
+        Instantiate(PoisonGas, new Vector3(-Random.Range(-10.2f, 10.2f), Random.Range(-4, 4), 0), Quaternion.identity);
+        Instantiate(Enemy1, new Vector3(13, Random.Range(-2.5f, 2.5f), 0), Quaternion.identity);
         yield return new WaitForSeconds(2.2f);
-        Instantiate(Enemy1);
+        Instantiate(Enemy1, new Vector3(13, Random.Range(-2.5f, 2.5f), 0), Quaternion.identity);
         Instantiate(Turret);
         yield return new WaitForSeconds(1.5f);
-        Instantiate(Lasers);
+        Instantiate(PoisonGas, new Vector3(-Random.Range(-10.2f, 10.2f), Random.Range(-4, 4), 0), Quaternion.identity);
+        Instantiate(Lasers);        
         yield return new WaitForSeconds(2);
+        Background.GetComponent<Renderer>().material.color = Color.red;
         Instantiate(Button);
     }
 
